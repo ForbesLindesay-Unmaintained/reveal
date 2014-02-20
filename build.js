@@ -12,6 +12,7 @@ var rimraf = require('rimraf').sync;
 step('cleanup', function () {
   rimraf(__dirname + '/temp');
   rimraf(__dirname + '/theme');
+  rimraf(__dirname + '/font');
   rimraf(__dirname + '/print');
   rimraf(__dirname + '/index.js');
   rimraf(__dirname + '/index.css');
@@ -30,13 +31,17 @@ step('move css', function () {
   fs.readdirSync(__dirname + '/temp/css/theme').filter(function (theme) {
     return /\.css$/.test(theme);
   }).forEach(function (theme) {
-    fs.renameSync(__dirname + '/temp/css/theme/' + theme, __dirname + '/theme/' + theme);
+    var css = fs.readFileSync(__dirname + '/temp/css/theme/' + theme, 'utf8');
+    css = css.replace(/[\.\/]+\/lib\/font\/([a-z_\.\-]+)/g, function (_, file) {
+      return '../font/' + file;
+    });
+    fs.writeFileSync(__dirname + '/theme/' + theme, css);
   });
   // used from one of the CSS files, so must be included
-  mkdirp(__dirname + '/lib/font');
+  mkdirp(__dirname + '/font');
   fs.readdirSync(__dirname + '/temp/lib/font').forEach(function (font) {
     fs.renameSync(__dirname + '/temp/lib/font/' + font,
-                  __dirname + '/lib/font/' + font);
+                  __dirname + '/font/' + font);
   });
 });
 
