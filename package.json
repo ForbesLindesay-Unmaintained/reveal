@@ -13,7 +13,7 @@
     "npm-fetch": "0.0.8"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "prepublish": "node build"
   },
   "repository": {
     "type": "git",

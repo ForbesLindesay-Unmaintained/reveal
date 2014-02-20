@@ -32,6 +32,12 @@ step('move css', function () {
   }).forEach(function (theme) {
     fs.renameSync(__dirname + '/temp/css/theme/' + theme, __dirname + '/theme/' + theme);
   });
+  // used from one of the CSS files, so must be included
+  mkdirp(__dirname + '/lib/font');
+  fs.readdirSync(__dirname + '/temp/lib/font').forEach(function (font) {
+    fs.renameSync(__dirname + '/temp/lib/font/' + font,
+                  __dirname + '/lib/font/' + font);
+  });
 });
 
 step('move js', function () {
