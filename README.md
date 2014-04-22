@@ -2,7 +2,7 @@
 
 The HTML presentation framework
 
-[![NPM version](https://badge.fury.io/js/reveal.png)](http://badge.fury.io/js/reveal)
+[![NPM version](https://img.shields.io/npm/v/reveal.svg)](http://badge.fury.io/js/reveal)
 
 ## Installation
 
