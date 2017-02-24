@@ -1,5 +1,7 @@
 # reveal
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/reveal.svg)](https://greenkeeper.io/)
+
 The HTML presentation framework
 
 [![NPM version](https://img.shields.io/npm/v/reveal.svg)](https://www.npmjs.com/package/reveal)
